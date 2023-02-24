@@ -1,8 +1,11 @@
 package fr.dawan.GestionFanClubFrontmvc.entities;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 
 
 
@@ -19,6 +22,21 @@ public class User implements Serializable {
 	private String lastName;
 	private String email;
 	private String password;
+	
+	private LocalDate dateInscription;
+	
+	
+	
+	
+	
+	public LocalDate getDateInscription() {
+		return dateInscription;
+	}
+
+	public void setDateInscription(LocalDate dateInscription) {
+		this.dateInscription = dateInscription;
+	}
+
 	public boolean isAdmin() {
 		return admin;
 	}

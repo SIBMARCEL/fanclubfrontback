@@ -90,8 +90,7 @@ public class UserController {
 	
 	@GetMapping(path = {"","/","home","accueil"})
 	public String Accueil(HttpSession session) {
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Index");
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>> Connect:"+session.getAttribute("connect"));
+		
 		return "index";
 	}
 	
@@ -178,7 +177,7 @@ public class UserController {
 	@GetMapping("users/delete/{id}")
 	public String DeleteUser(@PathVariable("id") int id, HttpSession session) {
 		
-		
+		System.out.println("voici l'id qu'on veut supprimer" +"  "+id);
 		
 		//restTemplate.delete(BASE_URL+"/api/users/delete/"+id);
 		
@@ -200,7 +199,7 @@ public class UserController {
 	@GetMapping("users/update/{id}")
 	public String Update(@PathVariable("id") int id, Model model, HttpSession session) {
 		
-	System.out.println("voici l'id qu'on veut modifier" +id);
+	System.out.println("voici l'id qu'on veut modifier" +"  "+id);
 		
 		
 		//User user = restTemplate.getForObject(BASE_URL+"/api/users/"+id, User.class);

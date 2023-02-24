@@ -1,5 +1,6 @@
 package fr.dawan.gestionfanclub.service;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +37,15 @@ public class ServiceUserImpl{
 	}
 	
 	public User SaveOrUpdate(User u) {
+		
+//		
+//		if(u.getId()==0) {;
+//		
+//		u.setDateInscription(LocalDate.now());
+//		}
+//		else {
+//			u.setDateInscription(u.getDateInscription());
+//		}
 		return userRepository.saveAndFlush(u);
 	}
 	
@@ -48,7 +58,7 @@ public class ServiceUserImpl{
 	}
 	
 	public void Delete(Long id) {
-		userRepository.deleteById(null);
+		userRepository.deleteById(id);
 	}
 
 	public LoginResponseDTO CheckLogin(LoginDTO loginDto) throws Exception {

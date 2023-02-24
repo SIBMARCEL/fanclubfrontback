@@ -45,6 +45,7 @@
                   <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
                     <input type="text" class="form-control" id="exampleInputPassword1"  th:field="*{password}">
+                  	
                   </div>
                   <div class="alert alert-warning" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
                   <div class="form-group">
@@ -59,69 +60,16 @@
                 </div>
                 <!-- /.card-body -->
 
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Valider</button>
-                </div>
+               
               </form>
             </div>
 	</div>
-	
-	
-<!-- 	<div class="container"> -->
-<!-- 		<form th:action="@{/users/addOrUpdate}" method="POST" -->
-<!-- 			enctype="multipart/form-data" th:object="${userForm}"> -->
-<!-- 			ID: <input type="text" th:field="*{id}" class="form-control" -->
-<!-- 				readonly="readonly" /><br /> First Name:<input type="text" -->
-<!-- 				th:field="*{firstName}" class="form-control" /> -->
-<!-- 			<div class="alert alert-warning" -->
-<!-- 				th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div> -->
-<!-- 			<br /> Last Name:<input type="text" th:field="*{lastName}" -->
-<!-- 				class="form-control" /> -->
-<!-- 			<div class="alert alert-warning" -->
-<!-- 				th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div> -->
-<!-- 			<br /> Email:<input type="text" th:field="*{email}" -->
-<!-- 				class="form-control" /> -->
-<!-- 			<div class="alert alert-warning" -->
-<!-- 				th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div> -->
-<!-- 			<br /> Password:<input type="text" th:field="*{password}" -->
-<!-- 				class="form-control" /> -->
-<!-- 			<div class="alert alert-warning" -->
-<!-- 				th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div> -->
-<!-- 			<br /> <input type="file" name="file" class="form-control" /> <br /> -->
-<!-- 			<img th:src="|data:image/jpeg;base64,${userForm.imageBase64}" -->
-<!-- 				style="width: 50px; height: 50px" :> -->
-<!-- 			<button type="submit" class="btn btn-primary">valider</button> -->
-
-<!-- 		</form> -->
-<!-- 		<div th:if="${Message}" th:text="${Message}" style="color: red"> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
 
 	<br />
 	<br />
 
-	<!-- 	<div class="container"> -->
-	<!-- 		<table class="table table-striped"> -->
-	<!-- 			<tr> -->
-	<!-- 				<th>First Name</th> -->
-	<!-- 				<th>Last Name</th> -->
-	<!-- 				<th>Email</th> -->
-	<!-- 				<th>Image</th> -->
-	<!-- 				<th>Actions</th> -->
-	<!-- 			</tr> -->
-	<!-- 			<tr th:each="u:${users}"> -->
-	<!-- 				<td th:text="${u.firstName}"></td> -->
-	<!-- 				<td th:text="${u.lastName}"></td> -->
-	<!-- 				<td th:text="${u.email}"></td> -->
-	<!-- 				<td><img th:src="|data:image/jpeg;base64,${u.imageBase64}" -->
-	<!-- 					style="width: 50px; height: 50px" /></td> -->
-	<!-- 				<td><a th:href="@{/users/delete/{id}(id=${u.id})}" class="btn btn-danger">Delete</a> <a -->
-	<!-- 					th:href="@{/users/update/{id}(id=${u.id})}" class="btn btn-warning">Update</a></td> -->
-	<!-- 			</tr> -->
-	<!-- 		</table> -->
 
-	<!-- 	</div> -->
-	<!-- Content Wrapper. Contains page content -->
+	
 	<div class="container">
 
 		<!-- Main content -->
@@ -145,16 +93,14 @@
 												<b th:text="${u.email}"></b>
 											</h2>
 											<p class="text-muted text-sm">
-												<b>About: </b> Web Designer / UX / Graphic Artist / Coffee
-												Lover
+												
 											</p>
 											<ul class="ml-4 mb-0 fa-ul text-muted">
-												<li class="small"><span class="fa-li"><i
-														class="fas fa-lg fa-building"></i></span> Address: Demo Street
-													123, Demo City 04312, NJ</li>
-												<li class="small"><span class="fa-li"><i
-														class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23
-													52</li>
+											
+												<li class="small">  
+												Date d'inscription
+												<b th:text="${u.dateInscription}"></b>
+												</li>
 											</ul>
 										</div>
 										<div class="col-5 text-center">
@@ -165,11 +111,13 @@
 								</div>
 								<div class="card-footer">
 									<div class="text-right">
+									
+										
 										<a href="#" class="btn btn-sm bg-teal"> <i
 											class="fas fa-comments"></i>
 										</a> <a th:href="@{/users/update/{id}(id=${u.id})}"
 											class="btn btn-sm btn-warning"> <i class="fas fa-user"></i>
-											Edit
+											Modifier
 										</a> <a th:href="@{/users/delete/{id}(id=${u.id})}"
 											class="btn btn-sm btn-danger"> <i class="fas fa-user"></i>
 											Delete
@@ -190,10 +138,7 @@
 						<li class="page-item"><a class="page-link" href="#">2</a></li>
 						<li class="page-item"><a class="page-link" href="#">3</a></li>
 						<li class="page-item"><a class="page-link" href="#">4</a></li>
-						<li class="page-item"><a class="page-link" href="#">5</a></li>
-						<li class="page-item"><a class="page-link" href="#">6</a></li>
-						<li class="page-item"><a class="page-link" href="#">7</a></li>
-						<li class="page-item"><a class="page-link" href="#">8</a></li>
+				
 					</ul>
 				</nav>
 			</div>

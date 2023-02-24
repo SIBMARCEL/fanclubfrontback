@@ -75,8 +75,9 @@ public class UserController {
 	// Données JSOn dans le body de la réponse - status ok (200)
 	
 	@GetMapping(value = "/{id}", produces = "application/json")
-	public User GetById(@PathVariable("id") int id) {
-		return userService.GetById(null);
+	public User GetById(@PathVariable("id") long id) {
+		System.out.println("id q'on veut supprimer" +id);
+		return userService.GetById(id);
 	}
 	
 	//POST: /api/users/save
@@ -110,6 +111,7 @@ public class UserController {
 		
 		User user = userService.GetById(id);
 		if(user != null) {
+			System.out.println("id qu'on veut supprimer  : "+ id);
 			userService.Delete(id);
 			return ResponseEntity.status(HttpStatus.OK).body("User with id = "+id+" deleted.");
 		}else {
