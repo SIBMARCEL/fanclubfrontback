@@ -88,8 +88,10 @@ public class UserController {
 		model.addAttribute("users",users);
 	}
 	
-	@GetMapping(path = {"/","home","accueil"})
-	public String Accueil() {
+	@GetMapping(path = {"","/","home","accueil"})
+	public String Accueil(HttpSession session) {
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Index");
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>> Connect:"+session.getAttribute("connect"));
 		return "index";
 	}
 	
@@ -167,7 +169,7 @@ public class UserController {
 		ResponseEntity<User> postForEntity = restTemplate.postForEntity(BASE_URL+"/api/users/save", httpEntity, User.class);
 		
 		if(session.getAttribute("loginResponseDto") == null) {
-			return "redirect:/login";
+			return "redirect:/";
 		}
 		return "redirect:/users";
 		
@@ -175,6 +177,8 @@ public class UserController {
 	
 	@GetMapping("users/delete/{id}")
 	public String DeleteUser(@PathVariable("id") int id, HttpSession session) {
+		
+		
 		
 		//restTemplate.delete(BASE_URL+"/api/users/delete/"+id);
 		
@@ -195,6 +199,9 @@ public class UserController {
 	
 	@GetMapping("users/update/{id}")
 	public String Update(@PathVariable("id") int id, Model model, HttpSession session) {
+		
+	System.out.println("voici l'id qu'on veut modifier" +id);
+		
 		
 		//User user = restTemplate.getForObject(BASE_URL+"/api/users/"+id, User.class);
 		
@@ -256,12 +263,14 @@ public class UserController {
 				
 				LoginResponseDTO loginResponseDTO = response.getBody();
 				session.setAttribute("loginResponseDto", loginResponseDTO);
+				session.setAttribute("connect", true);
+	  System.out.println(session.getAttribute("connect"));
 				
 				//getAllUsers(model, session);
 				
 				//return "redirect:/users";
 				
-				return "redirect:/users";
+				return "redirect:/";
 				
 			}else {
 				
@@ -285,6 +294,12 @@ public class UserController {
 	@GetMapping("/create-account")
 	public String createAccount() {
 		return "create-account";
+	}
+	
+	@GetMapping("/logout")
+	public String deconnexion(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
 	}
 	
 	

@@ -2,8 +2,7 @@ package fr.dawan.gestionfanclub.entities;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+
 
 import fr.dawan.gestionfanclub.enums.Role;
 import jakarta.persistence.Column;
@@ -40,17 +39,18 @@ public class User implements Serializable{
 	
 	private String ImagePath;
 	
-	private String nom;
+	private String firstName;
 	@Column (nullable = false)
-	private String prenom;
-	@Column (unique =true, nullable = false)
+	private String lastName;
+	@Column (unique =true, nullable = true)
 	private String pseudo;
 	private boolean active;
-	@Enumerated(EnumType.STRING)
-	private Role role;
+	
+	private boolean admin;
+	
 	@Column(nullable=false)
 	private String password;
-	private String imgprofil;
+
 	
 //	@OneToMany(mappedBy ="user")
 //	private List<Post> posts;

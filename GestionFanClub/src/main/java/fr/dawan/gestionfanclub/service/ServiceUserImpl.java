@@ -67,18 +67,18 @@ public class ServiceUserImpl{
 			//Gestion du token
 			
 			//- choisir les infos du user a sauvegarder
-			Map<String, Object> claims = new HashMap<>();
-			claims.put("userId", user.getId());
-			claims.put("fullname", user.getNom()+" "+user.getPrenom());
-			
-			//Générer le token
-			String token = jwtTokenTool.doGenerateToken(claims, user.getEmail());
-			
-			//Sauvegarde du token dans la map qu'utilise l'API pout vérifier le token
-			TokenSaver.tokenByEmail.put(user.getEmail(), token);
-			
-			//Injection du token loginResponseDTO
-			loginResponseDTO.setToken(token);
+//			Map<String, Object> claims = new HashMap<>();
+//			claims.put("userId", user.getId());
+//			claims.put("fullname", user.getFirstName()+" "+user.getLastName());
+//			
+//			//Générer le token
+//			String token = jwtTokenTool.doGenerateToken(claims, user.getEmail());
+//			
+//			//Sauvegarde du token dans la map qu'utilise l'API pout vérifier le token
+//			TokenSaver.tokenByEmail.put(user.getEmail(), token);
+//			
+//			//Injection du token loginResponseDTO
+//			loginResponseDTO.setToken(token);
 			
 			
 			return loginResponseDTO;

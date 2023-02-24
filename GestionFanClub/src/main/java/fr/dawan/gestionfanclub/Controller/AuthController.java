@@ -17,10 +17,6 @@ public class AuthController {
 	@Autowired
 	private ServiceUserImpl userService;
 	
-	@GetMapping("login")
-	public String connexion() {
-		return "login";
-	}
 	
 	@PostMapping(value="/login", consumes="application/json", produces="application/json")
 	public LoginResponseDTO CheckLogin(@RequestBody LoginDTO loginDto) throws Exception {

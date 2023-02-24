@@ -13,11 +13,21 @@ public class User implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -5166969487202226067L;
+	
 	private int id;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String password;
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
+
+	private boolean admin;
 	
 	private String imagePath;
 	

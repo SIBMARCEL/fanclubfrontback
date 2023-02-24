@@ -18,9 +18,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 				throws Exception {
 			//Vérifier si un user est connecté
 			
-			System.out.println(">>>>>>>>>>>>Interceptor.............");
-			System.out.println(request.getRequestURI());
-			System.out.println("Request Context: "+request.getContextPath());
+		
 			
 			if(request.getRequestURI().contains("/users")) {
 				if(request.getSession().getAttribute("loginResponseDto") == null) {

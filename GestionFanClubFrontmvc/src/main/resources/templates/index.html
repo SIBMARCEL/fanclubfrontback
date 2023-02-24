@@ -46,9 +46,17 @@
                        
                         <aside class="col-md-12">
                             <ul class="ritekhela-user-strip">
-                                
-                                <li><a href="#" data-toggle="modal" data-target="#ritekhelamodalcenter"><i class="fa fa-user-alt"></i> Connexion</a></li>
-                                <li><a href="#" data-toggle="modal" data-target="#ritekhelamodalrg"><i class="fa fa-sign-in-alt"></i> Créer un compte</a></li>
+                            <th:block th:unless="${session.connect}">
+                            <li><a href="#" data-toggle="modal" data-target="#ritekhelamodalcenter"><i class="fa fa-user-alt"></i> Connexion</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#ritekhelamodalrg"><i class="fa fa-sign-in-alt"></i> Créer un compte</a></li>
+                            </th:block>
+                            
+                            <th:block th:if="${session.connect}">
+                            	<li><a th:href="@{/users}"><i class="fa fa-user-alt"></i> Gestion des users</a></li>
+                            	 <li><a th:href="@{/logout}"><i class="fa fa-user-alt"></i> Déconnexion</a></li>
+                            	 
+                            </th:block>
+                               
                             </ul>
                         </aside>
 
@@ -390,20 +398,18 @@
                 </a>
                 
                 
-                <form th:action="@{/connexion}" method="POST" class="loginmodalbox-search">
-                   <input type="text" value="nom" name="firstName" onblur="if(this.value == '') { this.value ='nom'; }" onfocus="if(this.value =='nom') { this.value = ''; }">
-                    <input type="text" value="prenom" name="lastname" onblur="if(this.value == '') { this.value ='prenom'; }" onfocus="if(this.value =='prenom') { this.value = ''; }">
-                    <input type="text" value="email" name="email" onblur="if(this.value == '') { this.value ='email'; }" onfocus="if(this.value =='email') { this.value = ''; }">
-                    <input type="text" value="mot de passe" name="password" onblur="if(this.value == '') { this.value ='mot de passe'; }" onfocus="if(this.value =='mot de passe') { this.value = ''; }">
-                    <input type="text" value="Reentrez votre mot de passe" onblur="if(this.value == '') { this.value ='Reentrez votre mot de passe'; }" onfocus="if(this.value =='Reentrez votre mot de passe') { this.value = ''; }">
+                <form th:action="@{/new}" method="POST" th:object="${userForm}" class="loginmodalbox-search" enctype="multipart/form-data">
+                   <input type="text" value="nom" th:field="*{firstName}" onblur="if(this.value == '') { this.value ='nom'; }" onfocus="if(this.value =='nom') { this.value = ''; }">
+                    <input type="text" value="prenom" th:field="*{lastName}" onblur="if(this.value == '') { this.value ='prenom'; }" onfocus="if(this.value =='prenom') { this.value = ''; }">
+                    <input type="text" value="email" th:field="*{email}"  onblur="if(this.value == '') { this.value ='email'; }" onfocus="if(this.value =='email') { this.value = ''; }">
+                    <input type="text" value="mot de passe" th:field="*{password}"  onblur="if(this.value == '') { this.value ='mot de passe'; }" onfocus="if(this.value =='mot de passe') { this.value = ''; }">
+   
                     
-                    <input type="file" name="imagePath"  class="form-control" /> <br />
-		<img th:src="|data:image/jpeg;base64,${userForm.imageBase64}" style="width: 100px; height: 40px" >
+                    <input type="file" name="file"  class="form-control" /> <br />
+
                     
                     
-                    <input type="submit" value="Connexion" class="ritekhela-bgcolor">
-     				
-                    <a href="#" class="loginmodalbox-forget">Mot de passe oublié?</a>
+                    <input type="submit" value="S'inscrire" class="ritekhela-bgcolor">
                 </form>
                 
                 
