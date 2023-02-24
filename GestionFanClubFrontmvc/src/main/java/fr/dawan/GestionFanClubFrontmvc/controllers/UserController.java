@@ -263,6 +263,7 @@ public class UserController {
 				LoginResponseDTO loginResponseDTO = response.getBody();
 				session.setAttribute("loginResponseDto", loginResponseDTO);
 				session.setAttribute("connect", true);
+				session.setAttribute("admin", loginResponseDTO.isAdmin());
 	  System.out.println(session.getAttribute("connect"));
 				
 				//getAllUsers(model, session);

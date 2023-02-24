@@ -11,6 +11,7 @@ public class LoginDTO implements Serializable{
 	private String email;
 	private String password;
 	
+	
 	public String getEmail() {
 		return email;
 	}
@@ -23,6 +24,8 @@ public class LoginDTO implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	
 	
 	
 }

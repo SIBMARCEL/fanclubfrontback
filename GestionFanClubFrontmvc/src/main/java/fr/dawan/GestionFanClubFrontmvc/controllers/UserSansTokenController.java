@@ -69,7 +69,7 @@ public class UserSansTokenController {
 		model.addAttribute("users",users);
 	}
 	
-	@GetMapping("/")
+	@GetMapping("")
 	public String Accueil() {
 		return "index";
 	}

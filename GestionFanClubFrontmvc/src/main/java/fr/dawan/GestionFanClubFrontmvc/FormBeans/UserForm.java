@@ -18,6 +18,7 @@ package fr.dawan.GestionFanClubFrontmvc.FormBeans;
 		private String email;
 		@NotEmpty
 		private String password;
+		private boolean admin;
 		
 		private String imagePath;
 		
@@ -25,6 +26,14 @@ package fr.dawan.GestionFanClubFrontmvc.FormBeans;
 		private String imageBase64;
 		
 		
+
+		public boolean isAdmin() {
+			return admin;
+		}
+
+		public void setAdmin(boolean admin) {
+			this.admin = admin;
+		}
 
 		public String getImageBase64() {
 			return imageBase64;

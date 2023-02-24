@@ -12,12 +12,21 @@ public class LoginResponseDTO implements Serializable{
 	private String firstName;
 	private String lastName;
 	private String email;
+	private boolean admin;
 	private String imagePath;
 	private String token;
 	
 	
 	
 	
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
 
 	public String getToken() {
 		return token;

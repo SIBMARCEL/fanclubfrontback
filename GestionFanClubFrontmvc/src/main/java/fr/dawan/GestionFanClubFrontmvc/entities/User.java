@@ -22,7 +22,7 @@ public class User implements Serializable {
 	private String lastName;
 	private String email;
 	private String password;
-	
+	private boolean admin;
 	private LocalDate dateInscription;
 	
 	
@@ -45,7 +45,7 @@ public class User implements Serializable {
 		this.admin = admin;
 	}
 
-	private boolean admin;
+	
 	
 	private String imagePath;
 	
