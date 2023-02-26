@@ -88,11 +88,9 @@ public class UserController {
 		model.addAttribute("users",users);
 	}
 	
-	@GetMapping(path = {"","/","home","accueil"})
-	public String Accueil(HttpSession session) {
-		
-		return "index";
-	}
+
+	
+	
 	
 	@GetMapping("/users")
 	public String AllUser(Model model, HttpSession session ) {
@@ -107,6 +105,78 @@ public class UserController {
 		getAllUsers(model, session);
 		return "users";
 	}
+	
+	
+//	@GetMapping("/user")
+//	public String user(Model model, HttpSession session ) {
+//		
+//		/*
+//		 * restTemplate.exchange: permet d'insérer des infos dans le header de la requête. Ex: injection du token
+//		 * restTemplate.getForEntity: renvoie ResponseEntity: contient le status + données dans body
+//		 * restTemplate.getForObject: renvoie les données du body
+//		 * 
+//		 */
+//		//
+//		getcurrentUser(model, session);
+//		return "user";
+//	}
+//	
+//	
+//	
+//	
+//	
+//	
+//private void getcurrentUser(Model model, HttpSession session) {
+//		
+//		//Récupérer le token depuis la session
+//		LoginResponseDTO loginResponseDTO = (LoginResponseDTO) session.getAttribute("loginResponseDto");
+//		
+//		//Injection do token dans le header de la requ^te http
+//		HttpHeaders headers = new HttpHeaders();
+//		headers.add("Authorization","Bearer "+loginResponseDTO.getToken());
+//		
+//		//Pour insérer le contenu du header dans la requête, on doit utilise un objet HttpEntity
+//		HttpEntity<String> httpEntity = new HttpEntity<>(headers);
+//		
+//		ResponseEntity<User> reponse = restTemplate.exchange(BASE_URL+"/api//{id}",HttpMethod.GET, httpEntity, User.class);
+//		
+//		
+//	User user = reponse.getBody();
+//		
+//		
+//		//Récupérer les images des users
+//		
+//			
+//			//ResponseEntity<byte[]> responseEntity = restTemplate.getForEntity(BASE_URL+"/api/users/image/"+u.getId(), byte[].class); vesrion sans token
+//			ResponseEntity<byte[]> responseEntity = restTemplate.exchange(BASE_URL+"/api/users/image/"+user.getId(), HttpMethod.GET,httpEntity, byte[].class );
+//			try {
+//				
+//				byte[] resource = responseEntity.getBody();
+//				byte[] tab64 = Base64.getEncoder().encode(resource);
+//				String stBas64 = new String(tab64,"utf-8");
+//				user.setImageBase64(stBas64);			
+//				
+//			} catch (Exception e) {
+//				// TODO: handle exception
+//			}
+//		
+//		
+//		model.addAttribute("users",user);
+//	}
+	
+	@GetMapping(path = {"","/","home","accueil"})
+	public String Accueil(HttpSession session) {
+		
+		return "index";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@PostMapping(path = {"users/addOrUpdate","new"})
 	public String addUpdate(@Valid @ModelAttribute("userForm") UserForm userForm, BindingResult bindingResult, Model model,

@@ -2,13 +2,11 @@ package fr.dawan.gestionfanclub.entities;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
-
-import fr.dawan.gestionfanclub.enums.Role;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -93,6 +91,10 @@ public class User implements Serializable{
 		ImagePath = imagePath;
 	}
 
+	
+	
+	
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -166,7 +168,7 @@ public class User implements Serializable{
 	
 
 	
-//	@OneToMany(mappedBy ="user")
-//	private List<Post> posts;
+@OneToMany(mappedBy ="user")
+private List<Post> posts;
 }
 

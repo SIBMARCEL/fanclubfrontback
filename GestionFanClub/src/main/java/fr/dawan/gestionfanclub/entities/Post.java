@@ -26,12 +26,16 @@ public class Post implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private LocalDate datePublication;
+
+	@ManyToOne 
+	private User user;
+	
+	private String contenu;
+
+
 	
 //	@OneToOne(mappedBy = "post")
 //	private Club club;
-	
-//	@ManyToOne 
-//	private User user;
-	
-	private String contenu;
+
+
 }

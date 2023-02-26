@@ -9,6 +9,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import fr.dawan.gestionfanclub.dto.*;
 
 import fr.dawan.gestionfanclub.tools.*;
@@ -46,7 +47,14 @@ public class ServiceUserImpl{
 //		else {
 //			u.setDateInscription(u.getDateInscription());
 //		}
+		u.setDateInscription(LocalDate.now());
+		u.setPassword(HashTool.cryptPassword(u.getPassword()));
 		return userRepository.saveAndFlush(u);
+		
+		
+		
+		
+		
 	}
 	
 	public User FindByEmail(String email) {
@@ -66,7 +74,7 @@ public class ServiceUserImpl{
 		System.out.println(loginDto.getEmail());
 		
 		User user = userRepository.findByEmail(loginDto.getEmail());
-		if(user != null && user.getPassword().equals(loginDto.getPassword())) {	
+		if(user != null && user.getPassword().equals(HashTool.cryptPassword(loginDto.getPassword()))) {	
 			
 //			ModelMapper mapper = new ModelMapper();
 //			mapper.map(user,  LoginResponseDTO.class);
