@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zxx">
+<html xmlns:th="http://www.thymeleaf.org">
 
 
 <!--  36:22-->
@@ -44,11 +44,52 @@
                         
                        
                         <aside class="col-md-12">
-                            <ul class="ritekhela-user-strip">
-                                
-                                <li><a href="#" data-toggle="modal" data-target="#ritekhelamodalcenter"><i class="fa fa-user-alt"></i> Connexion</a></li>
-                                <li><a href="#" data-toggle="modal" data-target="#ritekhelamodalrg"><i class="fa fa-sign-in-alt"></i> Créer un compte</a></li>
-                            </ul>
+                         
+						
+							<ul class="ritekhela-user-strip">
+								<th:block th:unless="${session.connect}">
+									<li><a href="#" data-toggle="modal"
+										data-target="#ritekhelamodalcenter"><i
+											class="fa fa-user-alt"></i> Connexion</a></li>
+									<li><a href="#" data-toggle="modal"
+										data-target="#ritekhelamodalrg"><i
+											class="fa fa-sign-in-alt"></i> Créer un compte</a></li>
+									<!--                              <li><a th:href="@{/projectsdirectory}"><i ></i> Retour à l'accueil projets</a></li> -->
+
+								</th:block>
+
+								<th:block th:if="${session.connect}">
+									<th:block th:if="${session.admin}">
+										<li><a th:href="@{/users}"><i class="fa fa-user-alt"></i>
+												Gestion des utilisateurs</a></li>
+										<li><a th:href="@{/logout}"><i class="fa fa-user-alt"></i>
+												Déconnexion</a></li>
+<!-- 										<li><a th:href="@{/projectsdirectory}"><i></i> -->
+<!-- 												Retour à l'accueil projets</a></li> -->
+
+
+									</th:block>
+
+
+									<th:block th:unless="${session.admin}">
+
+										<li><a th:href="@{/user}"><i class="fa fa-user-alt"></i>
+												MonCompte</a></li>
+										<li><a th:href="@{/logout}"><i class="fa fa-user-alt"></i>
+												Déconnexion</a></li>
+
+									</th:block>
+
+
+
+
+
+
+								</th:block>
+							</ul>
+							
+							
+							
                         </aside>
 
                     </div>
@@ -71,11 +112,11 @@
                                     </span>
                                     <nav id="main-nav">
                                         <ul id="main-menu" class="sm sm-blue">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="basket.html">BASKET</a></li>
-                                            <li><a href="football.html">FOOT</a></li>
+                                            <li><a href="/">Home</a></li>
+                                            <li><a href="basket">BASKET</a></li>
+                                            <li><a href="foot">FOOT</a></li>
                                             <li class="active"><a href="#">VOLLEY</a></li>
-                                            <li><a href="rugby.html">RUGBY</a></li>
+                                            <li><a href="rugby">RUGBY</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -114,75 +155,23 @@
                             <div class="ritekhela-blogs ritekhela-blog-view2">
                                 <ul class="row">
                                     <li class="col-md-6">
-                                        <figure><a href="#"><img src="extra-images/blog-view2-1.jpg" alt=""></a></figure>
+                                        <figure><a href="#"><img src="extra-images/nice.jpg" alt=""></a></figure>
                                         <div class="ritekhela-blog-view2-text">
-                                            <h2><a href="#">Ipsum cursus leo vel metus</a></h2>
-                                            <time datetime="2008-02-14 20:00">July 01, 2019 5:50 am</time>
+                                            <h2><a href="#">volley</a></h2>
+                                            <time datetime="2008-02-14 20:00">2023</time>
                                         </div>
                                     </li>
                                     <li class="col-md-6">
-                                        <figure><a href="#"><img src="extra-images/blog-view2-2.jpg" alt=""></a></figure>
+                                        <figure><a href="#"><img src="extra-images/toulouse.png" alt=""></a></figure>
                                         <div class="ritekhela-blog-view2-text">
-                                            <h2><a href="#">TV host’s hand impaled</a></h2>
-                                            <time datetime="2008-02-14 20:00">June 01, 2019 6:20 am</time>
+                                            <h2><a href="#">Toulouse</a></h2>
+                                            <time datetime="2008-02-14 20:00">2023</time>
                                         </div>
                                     </li>
-                                    <li class="col-md-6">
-                                        <figure><a href="#"><img src="extra-images/blog-view2-3.jpg" alt=""></a></figure>
-                                        <div class="ritekhela-blog-view2-text">
-                                            <h2><a href="#">One more time? Federer</a></h2>
-                                            <time datetime="2008-02-14 20:00">March 01, 2019 2:40 am</time>
-                                        </div>
-                                    </li>
-                                    <li class="col-md-6">
-                                        <figure><a href="#"><img src="extra-images/blog-view2-4.jpg" alt=""></a></figure>
-                                        <div class="ritekhela-blog-view2-text">
-                                            <h2><a href="#">Federer golden opportunity</a></h2>
-                                            <time datetime="2008-02-14 20:00">April 01, 2019 1:80 am</time>
-                                        </div>
-                                    </li>
-                                    <li class="col-md-6">
-                                        <figure><a href="#"><img src="extra-images/blog-view2-5.jpg" alt=""></a></figure>
-                                        <div class="ritekhela-blog-view2-text">
-                                            <h2><a href="#">Ipsum cursus leo vel metus</a></h2>
-                                            <time datetime="2008-02-14 20:00">May 01, 2019 9:50 am</time>
-                                        </div>
-                                    </li>
-                                    <li class="col-md-6">
-                                        <figure><a href="#"><img src="extra-images/blog-view2-6.jpg" alt=""></a></figure>
-                                        <div class="ritekhela-blog-view2-text">
-                                            <h2><a href="#">TV host’s hand impaled</a></h2>
-                                            <time datetime="2008-02-14 20:00">Jan 01, 2019 3:10 am</time>
-                                        </div>
-                                    </li>
-                                    <li class="col-md-6">
-                                        <figure><a href="#"><img src="extra-images/blog-view2-6.jpg" alt=""></a></figure>
-                                        <div class="ritekhela-blog-view2-text">
-                                            <h2><a href="#">TV host’s hand impaled</a></h2>
-                                            <time datetime="2008-02-14 20:00">Jan 01, 2019 3:10 am</time>
-                                        </div>
-                                    </li>
-                                    <li class="col-md-6">
-                                        <figure><a href="#"><img src="extra-images/blog-view2-6.jpg" alt=""></a></figure>
-                                        <div class="ritekhela-blog-view2-text">
-                                            <h2><a href="#">TV host’s hand impaled</a></h2>
-                                            <time datetime="2008-02-14 20:00">Jan 01, 2019 3:10 am</time>
-                                        </div>
-                                    </li>
-                                    <li class="col-md-6">
-                                        <figure><a href="#"><img src="extra-images/blog-view2-6.jpg" alt=""></a></figure>
-                                        <div class="ritekhela-blog-view2-text">
-                                            <h2><a href="#">TV host’s hand impaled</a></h2>
-                                            <time datetime="2008-02-14 20:00">Jan 01, 2019 3:10 am</time>
-                                        </div>
-                                    </li>
-                                    <li class="col-md-6">
-                                        <figure><a href="#"><img src="extra-images/blog-view2-6.jpg" alt=""></a></figure>
-                                        <div class="ritekhela-blog-view2-text">
-                                            <h2><a href="#">TV host’s hand impaled</a></h2>
-                                            <time datetime="2008-02-14 20:00">Jan 01, 2019 3:10 am</time>
-                                        </div>
-                                    </li>
+                                  
+                                 
+                                
+                                  
                                 </ul>
                             </div>
                             <!--// Latest Blog's //-->
@@ -226,24 +215,52 @@
 
 
     <!--// Login ModalBox //-->
-    <div class="loginmodalbox modal fade" id="ritekhelamodalcenter" tabindex="-1">
-       <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-             <div class="modal-body ritekhela-bgcolor-two">
-                <h5 class="modal-title">Login To Your Account</h5>
-                <a href="#" class="close ritekhela-bgcolor-two" data-dismiss="modal" aria-label="Close">
-                    <i class="fa fa-times"></i>
-                </a>
-                <form class="loginmodalbox-search">
-                    <input type="text" value="Enter User Name" onblur="if(this.value == '') { this.value ='Enter User Name'; }" onfocus="if(this.value =='Enter User Name') { this.value = ''; }">
-                    <input type="text" value="Type Here Password" onblur="if(this.value == '') { this.value ='Type Here Password'; }" onfocus="if(this.value =='Type Here Password') { this.value = ''; }">
-                    <input type="submit" value="Login Now" class="ritekhela-bgcolor">
-                    <a href="#" class="loginmodalbox-forget">Forget Password?</a>
-                </form>
-             </div>
-          </div>
-       </div>
-    </div>
+<div class="loginmodalbox modal fade" id="ritekhelamodalcenter"
+		tabindex="-1">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-body ritekhela-bgcolor-two">
+					<h5 class="modal-title">Connexion à ton compte</h5>
+					<a href="#" class="close ritekhela-bgcolor-two"
+						data-dismiss="modal" aria-label="Close"> <i
+						class="fa fa-times"></i>
+					</a>
+
+
+
+					<form th:action="@{/connexion}" method="POST"
+						class="loginmodalbox-search">
+						<input type="text" value="email" name="email"
+							onblur="if(this.value == '') { this.value ='email'; }"
+							onfocus="if(this.value =='email') { this.value = ''; }">
+
+						<input type="text" value="Entrez votre mot de passe"
+							name="password"
+							onblur="if(this.value == '') { this.value ='Entrez votre mot de passe'; }"
+							onfocus="if(this.value =='Entrez votre mot de passe') { this.value = ''; }">
+						<input type="submit" value="Connexion" class="ritekhela-bgcolor">
+
+
+						<a href="#" class="loginmodalbox-forget">Mot de passe oublié?</a>
+					</form>
+
+
+
+
+					<div class="ritekhela-loginbox-social">
+						<ul>
+							<!--                         <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li> -->
+							<li class="twitter"><a href="#"><i
+									class="fab fa-twitter"></i> Twitter</a></li>
+							<li class="linkedin"><a href="#"><i
+									class="fab fa-linkedin-in"></i> Linkedin</a></li>
+							<!--                         <li class="dribbble"><a href="#"><i class="fab fa-dribbble"></i> Dribbble</a></li> -->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
     <!--// Login ModalBox //-->
     <div class="loginmodalbox modal fade" id="ritekhelamodalrg" tabindex="-1">

@@ -28,6 +28,15 @@
 
 
 
+<!-- <link rel="stylesheet" th:href="@{/css/bootstrap.css}"> -->
+<link rel="stylesheet" th:href="@{/css/fontawesome-all.css}">
+<link rel="stylesheet" th:href="@{/css/slick-slider.css}">
+<link rel="stylesheet" th:href="@{/css/fancybox.css}">
+<link rel="stylesheet" th:href="@{/css/smartmenus.css}">
+<link rel="stylesheet" th:href="@{/style.css}">
+<link rel="stylesheet" th:href="@{/css/color.css}">
+<link rel="stylesheet" th:href="@{/css/responsive.css}">
+<link rel="stylesheet" th:href="@{/styles/cssandjs/main.css}" />
 
 
 
@@ -44,15 +53,168 @@
 
 
 
+<div class="ritekhela-wrapper">
+
+		<!--// Header //-->
+		<header id="ritekhela-header" class="ritekhela-header-one">
+
+			<!--// TopStrip //-->
+			<div class="ritekhela-topstrip">
+				<div class="container">
+					<div class="row">
+
+
+						<aside class="col-md-12">
+							<ul class="ritekhela-user-strip">
+								<th:block th:unless="${session.connect}">
+<!-- 									<li><a href="#" data-toggle="modal" -->
+<!-- 										data-target="#ritekhelamodalcenter"><i -->
+<!-- 											class="fa fa-user-alt"></i> Connexion</a></li> -->
+<!-- 									<li><a href="#" data-toggle="modal" -->
+<!-- 										data-target="#ritekhelamodalrg"><i -->
+<!-- 											class="fa fa-sign-in-alt"></i> Créer un compte</a></li> -->
+									<!--                              <li><a th:href="@{/projectsdirectory}"><i ></i> Retour à l'accueil projets</a></li> -->
+
+								</th:block>
+
+								<th:block th:if="${session.connect}">
+									<th:block th:if="${session.admin}">
+								
+										<li><a th:href="@{/logout}"><i class="fa fa-user-alt"></i>
+												Déconnexion</a></li>
+<!-- 										<li><a th:href="@{/projectsdirectory}"><i></i> -->
+<!-- 												Retour à l'accueil projets</a></li> -->
+
+
+									</th:block>
+
+
+									<th:block th:unless="${session.admin}">
+
+										<li><a th:href="@{/user}"><i class="fa fa-user-alt"></i>
+												MonCompte</a></li>
+										<li><a th:href="@{/logout}"><i class="fa fa-user-alt"></i>
+												Déconnexion</a></li>
+
+									</th:block>
+
+
+
+
+
+
+								</th:block>
+							</ul>
+						</aside>
+
+					</div>
+				</div>
+			</div>
+			<!--// TopStrip //-->
+
+			<!--// Main Header //-->
+			<div class="ritekhela-main-header">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<a href="index-2.html" class="ritekhela-logo"><img
+								class="logo" src="images/sport.png" alt=""></a>
+							<div class="ritekhela-right-section">
+								<div class="ritekhela-navigation">
+									<span class="ritekhela-menu-link"> <span
+										class="menu-bar"></span> <span class="menu-bar"></span> <span
+										class="menu-bar"></span>
+									</span>
+									<nav id="main-nav">
+										<ul id="main-menu" class="sm sm-blue">
+											<li class="active"><a href="/">Accueil</a></li>
+<!-- 											<li><a href="basket.html">BASKET</a></li> -->
+<!-- 											<li><a href="#">FOOT</a></li> -->
+<!-- 											<li><a href="#">VOLLEY</a></li> -->
+<!-- 											<li><a href="#">CYCLISME</a></li> -->
+<!-- 											<li><a href="#">RUGBY</a></li> -->
+										</ul>
+									</nav>
+								</div>
+<!-- 								<ul class="ritekhela-navsearch"> -->
+
+<!-- 									<li><a href="#" data-toggle="modal" -->
+<!-- 										data-target="#ritekhelamodalsearch"><i -->
+<!-- 											class="fa fa-search"></i></a></li> -->
+<!-- 								</ul> -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	<div class="row">
 
-		<div class="col-4">
+		<div class="col-6">
 
 
 
 			<div class="container ">
+
+
+
+			<nav class="navbar navbar-light bg-light">
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Rechercher un utilisateur" aria-label="Search">
+    <button type="button" class="btn btn-success">Rechercher</button>
+  </form>
+</nav>
+
+
 
 
 				<div class="card card-primary">
@@ -129,6 +291,9 @@
 
 
 								<button type="submit" class="btn btn-primary">Valider</button>
+								
+								
+								
 							</div>
 							
 							
@@ -138,6 +303,12 @@
 						</div>
 
 					</form>
+					
+					
+					
+					
+					
+					
 				</div>
 
 
@@ -193,13 +364,18 @@
 
 											<a href="#" class="btn btn-sm bg-teal"> <i
 												class="fas fa-comments"></i>
-											</a> <a th:href="@{/users/update/{id}(id=${u.id})}"
+											</a> 
+											
+											<a th:href="@{/users/update/{id}(id=${u.id})}"
 												class="btn btn-sm btn-warning"> <i class="fas fa-user"></i>
 												Modifier
 											</a> 
+											
+											
+											
 											<a th:href="@{/users/delete/{id}(id=${u.id})}"
 												class="btn btn-sm btn-danger"> <i class="fas fa-user"></i>
-												Delete
+												Supprimer 
 											</a>
 											
 										</div>
@@ -209,6 +385,10 @@
 						</div>
 					</div>
 				</div>
+				
+				
+				
+				
 				<br /> <br />
 				<!-- /.card-body -->
 				<div class="card-footer">
@@ -233,7 +413,13 @@
 
 		</div>
 		
-		
+			<div class="ritekhela-copyright">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">Dawan Project Fan club-2023</div>
+				</div>
+			</div>
+		</div>
 		 
 		
 		
@@ -243,17 +429,17 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <a class="close" data-dismiss="modal">×</a>
-                    <h3>Tester la fonctionalité chat</h3>
+                    <h3>Tester la fonctionnalité chat</h3>
                 </div>
                 
                 <form id="contactForm" name="contact" role="form">
                     <div class="modal-body">				
                         <div class="form-group">
-                            <label for="name">Nom</label>
+                            <label for="name">pseudo</label>
                             <input type="text" name="name" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="email">Prénom</label>
+                            <label for="email">email</label>
                             <input type="email" name="email" class="form-control">
                         </div>
                         <div class="form-group">
@@ -274,6 +460,10 @@
                         
                     </div>
                 </form>
+                
+                
+                
+                
             </div>
         </div>
     </div>

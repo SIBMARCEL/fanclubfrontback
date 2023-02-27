@@ -27,25 +27,40 @@ public class User implements Serializable {
 	
 	
 	
-	
+	/**
+	 * 
+	 * @return
+	 */
 	
 	public LocalDate getDateInscription() {
 		return dateInscription;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public void setDateInscription(LocalDate dateInscription) {
 		this.dateInscription = dateInscription;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean isAdmin() {
 		return admin;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
 
-	
+	/**
+	 * 
+	 * @return
+	 */
 	
 	private String imagePath;
 	
@@ -57,7 +72,10 @@ public class User implements Serializable {
 	public String getImageBase64() {
 		return imageBase64;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public void setImageBase64(String imageBase64) {
 		this.imageBase64 = imageBase64;
 	}
@@ -69,19 +87,31 @@ public class User implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public String getFirstName() {
 		return firstName;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public String getLastName() {
 		return lastName;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}

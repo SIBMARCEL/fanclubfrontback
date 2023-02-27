@@ -32,6 +32,7 @@ import fr.dawan.gestionfanclub.service.ServiceUserImpl;
 
 @RestController
 @RequestMapping("/api/users")
+
 public class UserController {
 
 	//Ajouter un dossier images à la racine du projet qui va contenir les photos de profil
