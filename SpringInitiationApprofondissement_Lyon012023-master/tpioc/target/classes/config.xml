@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--
+	Les objets gérées par le conteneur IOC sont des beans
+	Ses beans sont rangées dans le context de Spring. C'est une espace mémoire 
+	dans laquel Spring range les éléments de configurations(les objets spring)
+ -->
+	<bean id="dao" class="fr.dawan.tpioc.dao.V2.DaoImplV2">
+	</bean>
+	
+	<bean id="metier" class="fr.dawan.tpioc.metier.MetierImpl">
+		<!-- Association par setter : Injection de dependance  -->
+		<!-- 
+			property fait appel directement à la methode setDao 
+			En appelant la méthode setDao je lui donne en paramètre un objet de type DAO
+		-->
+		<property name="dao" ref="dao"/>
+	</bean>
+	
+	<!-- Lorsque Spring va demarrer il va faire le travail qu'on a fait précedemment  lorsqu'on a fait l'instanciation 
+	dynamique (par reflexion) : 
+		- Il va lire le fichier config.xml 
+		- Il va charger la classe en utilisant Class.forName puis new Instance 
+		- En gros, il va créer un objet DaoImpl, un Objet MetierImpl et ensuite il va faire l'association 
+		(l'injection de dependance)
+	-->
+
+</beans>

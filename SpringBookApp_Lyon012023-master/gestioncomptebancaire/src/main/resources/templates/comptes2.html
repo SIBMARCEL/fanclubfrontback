@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Your Bank</title>
+	<link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+</head>
+
+<body>
+	<!--Pour tester -->
+	<!--<h1>Test</h1>-->
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-md-6">
+				<div class="card  mt-3">
+					<div class="card-header text-white" id="card-header-color">
+						Consultation d'un compte
+					</div>
+					<div class="card-body">
+						<form th:action="@{/bank/consultercompte}" method="get">
+							<div>
+								<label>Numero compte: </label>
+								<input type="text" name="numCompte" th:value="${numCompte}" />
+								<button type="submit" class="btn" id="buttonOK">OK</button>
+							</div>
+						</form>
+
+						<div class="text-danger" th:if="${compteIntrouvableException}"
+							th:text="${compteIntrouvableException}">
+
+						</div>
+					</div>
+				</div>
+
+				<div class="card mt-3" th:if="${compte}">
+					<!--On affiche les div que si on a un compte, et qu'il existe-->
+					<div class="card-header text-white" id="card-header-color">
+						Information sur le compte
+					</div>
+					<div class="card-body">
+						<div>
+							<label>Client:</label>
+							<label th:text="${compte.client.nom}"></label>
+						</div>
+						<div>
+							<label>Numéro du compte: </label>
+							<label th:text="${compte.numCompte}"></label>
+						</div>
+						<div>
+							<label>Solde: </label>
+							<label th:text="${compte.solde}"></label>
+						</div>
+						<div>
+							<label>Date de création: </label>
+							<label th:text="${compte.dateCreation}"></label>
+						</div>
+						<div>
+							<!--
+								Object.class retourne la classe 
+								Object.class.simpleName affiche le nom de classe 
+								CompteCourant ou CompteEpargne
+							-->
+							<label>Type de compte: </label>
+							<label th:text="${compte.class.simpleName}"></label>
+						</div>
+						<div>
+							<!--Si le compte est un CompteCourant on affiche Decouvert 
+								Sinon si le compte est un CompteEpargne on affiche Taux-->
+							<div th:if="${compte.class.simpleName == 'CompteCourant'}">
+								<label>Découvert: </label> <label th:text="${compte.decouvert}"></label>
+							</div>
+							<div th:if="${compte.class.simpleName == 'CompteEpargne'}">
+								<label>Taux: </label> <label th:text="${compte.taux}"></label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6 mt-3">
+
+				<div class="card" th:if="${compte}">
+					<div class="card-header text-white" id="card-header-color">Opération sur le compte</div>
+					<div class="card-body">
+						<form th:action="@{/bank/saveOperation}" method="post">
+							<div>
+								<label>Compte: </label>
+								<label th:text="${numCompte}"></label>
+								<input type="hidden" name="numCompte" th:value="${numCompte}" />
+							</div>
+
+							<div class="form-check form-check-inline">
+								<input type="radio" name="typeOperation" class="form-check-input" id="radio1"
+									value="versement" checked="checked"
+									onchange="document.getElementById('forVirement').style.display='none'" />
+								<label class="form-check-label" for="radio1">Versement</label>
+							</div>
+
+							<div class="form-check form-check-inline">
+								<input type="radio" name="typeOperation" class="form-check-input" id="radio2"
+									value="retrait"
+									onchange="document.getElementById('forVirement').style.display='none'" />
+								<label class="form-check-label" for="radio1">Retrait</label>
+							</div>
+
+							<div class="form-check form-check-inline">
+								<input type="radio" name="typeOperation" class="form-check-input" id="radio2"
+									value="virement"
+									onchange="document.getElementById('forVirement').style.display='block'" />
+								<label class="form-check-label" for="radio3">Virement</label>
+							</div>
+
+							<div class="mt-2" id="forVirement" style="display: none;">
+								<label>Vers le compte: </label>
+								<input type="text" name="numCompte2" />
+							</div>
+
+							<div class="mt-2">
+								<label>Montant: </label>
+								<input type="text" name="montant" th:value="${montant}" />
+							</div>
+
+							<div class="col-12 mt-3">
+								<button class="btn btn-outline-dark" type="submit">Save Operation</button>
+							</div>
+
+							<!--Pour afficher le message d'erreur on va faire appel à l'objet request
+						avec une servlet pour recuperer les valeurs d'un paramètre d'une requête
+						Avec thymeleaf pour acceder à l'objet request il utiliser : '
+								${#httpServletRequest.getParameter('compteIntrouvableException')}
+						Quand thymeleaf s'execute il le fait dans un context d'une servlet (dispatcherServlet)
+						Donc on peut acceder à l'objet request du dispatcherServlet  (la requete courante)
+						-->
+
+
+							<div class="text-danger"
+								th:text="${#httpServletRequest.getParameter('compteIntrouvableException')}">
+							</div>
+
+							<div class="text-danger"
+								th:text="${#httpServletRequest.getParameter('soldeInsuffisantException')}">
+							</div>
+
+							<div class="text-danger"
+								th:text="${#httpServletRequest.getParameter('virementMemeCompteException')}">
+							</div>
+
+						</form>
+					</div>
+				</div>
+
+				<div class="card  mt-3" th:if="${compte}">
+					<div class="card-header text-white" id="card-header-color">Liste des operations</div>
+					<div class="card-body">
+						<table class="table table-dark">
+							<thead>
+								<tr>
+									<th>Numero</th>
+									<th>Type</th>
+									<th>Date</th>
+									<th>Montant</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!--Comment faire une boucle avec Thymeleaf-->
+								<tr th:each="op:${listOperations}">
+									<td th:text="${op.numOperation}"></td>
+									<!--Pour le type de l'operation on va utiliser op.class.simpleName-->
+									<td th:text="${op.class.simpleName}"></td>
+									<td th:text="${op.dateOperation}"></td>						
+									<td th:text="${op.montant}"></td>
+								</tr>
+							</tbody>
+						</table>
+						
+						
+						<ul class="nav nav-pills">
+							<li th:each="page, status:${pages}">
+								<!--<a th:text="${status}"></a>-->
+								<!--th:class : veut dire qu'on utiliser les classes css suite à une condition-->
+							<a th:class="${status.index==pageCourante?'btn btn-dark m-sm-2 m-1'
+										:'btn btn-outline-dark m-sm-2 m-1'}"
+									
+								th:href="@{/bank/consultercompte(numCompte=${numCompte}, 
+										page=${status.index},
+										size=${size})}"	
+									
+										th:text="${status.index}" >
+								
+							</a>
+							</li>
+							
+						</ul>
+						
+						
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+	</div>
+	</div>
+</body>
+
+</html>
