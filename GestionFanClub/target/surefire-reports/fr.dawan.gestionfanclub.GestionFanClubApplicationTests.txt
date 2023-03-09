@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: fr.dawan.gestionfanclub.GestionFanClubApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.265 s - in fr.dawan.gestionfanclub.GestionFanClubApplicationTests

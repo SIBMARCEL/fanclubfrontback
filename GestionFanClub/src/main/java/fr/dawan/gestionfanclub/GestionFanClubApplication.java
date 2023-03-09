@@ -13,6 +13,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import fr.dawan.gestionfanclub.Controller.UserController;
 import fr.dawan.gestionfanclub.interceptors.TokenInterceptor;
 
+
+
+
+
+
+
 @SpringBootApplication
 public class GestionFanClubApplication {
 

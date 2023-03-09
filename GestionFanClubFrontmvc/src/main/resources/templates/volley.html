@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Sports & Magazine Khela</title>
+    <title>FanClub</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -112,11 +112,13 @@
                                     </span>
                                     <nav id="main-nav">
                                         <ul id="main-menu" class="sm sm-blue">
-                                            <li><a href="/">Home</a></li>
-                                            <li><a href="basket">BASKET</a></li>
-                                            <li><a href="foot">FOOT</a></li>
-                                            <li class="active"><a href="#">VOLLEY</a></li>
-                                            <li><a href="rugby">RUGBY</a></li>
+                                         <li><a class="btn btn-primary btn-sm"href="/" >Accueil</a></li>
+                                            <li><a class="btn btn-primary btn-sm" href="basket" >BASKET</a></li>
+                                          	
+											<li><a class="btn btn-primary btn-sm"href="foot" >FOOT</a></li>
+											<li class="active btn btn-primary btn-sm"><a href="#" >VOLLEY</a></li>
+							
+											<li><a class="btn btn-primary btn-sm"href="rugby" >RUGBY</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -247,41 +249,55 @@
 
 
 
-					<div class="ritekhela-loginbox-social">
-						<ul>
-							<!--                         <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li> -->
-							<li class="twitter"><a href="#"><i
-									class="fab fa-twitter"></i> Twitter</a></li>
-							<li class="linkedin"><a href="#"><i
-									class="fab fa-linkedin-in"></i> Linkedin</a></li>
-							<!--                         <li class="dribbble"><a href="#"><i class="fab fa-dribbble"></i> Dribbble</a></li> -->
-						</ul>
-					</div>
+					
 				</div>
 			</div>
 		</div>
 	</div>
 
     <!--// Login ModalBox //-->
-    <div class="loginmodalbox modal fade" id="ritekhelamodalrg" tabindex="-1">
-       <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-             <div class="modal-body ritekhela-bgcolor-two">
-                <h5 class="modal-title">Sign Up Now</h5>
-                <a href="#" class="close ritekhela-bgcolor-two" data-dismiss="modal" aria-label="Close">
-                    <i class="fa fa-times"></i>
-                </a>
-                <form class="loginmodalbox-search">
-                    <input type="text" value="Enter User Name" onblur="if(this.value == '') { this.value ='Enter User Name'; }" onfocus="if(this.value =='Enter User Name') { this.value = ''; }">
-                    <input type="text" value="Type Your Password" onblur="if(this.value == '') { this.value ='Type Your Password'; }" onfocus="if(this.value =='Type Your Password') { this.value = ''; }">
-                    <input type="text" value="Confirm your password" onblur="if(this.value == '') { this.value ='Confirm your password'; }" onfocus="if(this.value =='Confirm your password') { this.value = ''; }">
-                    <input type="submit" value="Sign Up" class="ritekhela-bgcolor">
-                    <a href="#" class="loginmodalbox-forget">Forget Password?</a>
-                </form>
-             </div>
-          </div>
-       </div>
-    </div>
+
+	<div class="loginmodalbox modal fade" id="ritekhelamodalrg"
+		tabindex="-1">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-body ritekhela-bgcolor-two">
+					<h5 class="modal-title">Inscription</h5>
+					<a href="#" class="close ritekhela-bgcolor-two"
+						data-dismiss="modal" aria-label="Close"> <i
+						class="fa fa-times"></i>
+					</a>
+
+
+					<form th:action="@{/new}" method="POST" th:object="${userForm}"
+						class="loginmodalbox-search" enctype="multipart/form-data">
+						<input type="text" placeholder="nom" value="nom" th:field="*{firstName}"
+							onblur="if(this.value == '') { this.value ='nom'; }"
+							onfocus="if(this.value =='nom') { this.value = ''; }"> 
+							<input
+							type="text" value="prenom" placeholder="prénom" th:field="*{lastName}"
+							onblur="if(this.value == '') { this.value ='prenom'; }"
+							onfocus="if(this.value =='prenom') { this.value = ''; }">
+						<input type="text" value="email"  placeholder="email"  th:field="*{email}"
+							onblur="if(this.value == '') { this.value ='email'; }"
+							onfocus="if(this.value =='email') { this.value = ''; }">
+						<input type="text" value="mot de passe" placeholder="mot de passe" th:field="*{password}"
+							onblur="if(this.value == '') { this.value ='mot de passe'; }"
+							onfocus="if(this.value =='mot de passe') { this.value = ''; }">
+
+
+						<input type="file" name="file" class="form-control" /> <br /> <input
+							type="submit" value="S'inscrire" class="ritekhela-bgcolor">
+					</form>
+
+
+
+
+					
+				</div>
+			</div>
+		</div>
+	</div>
 
     <!--// Search ModalBox //-->
     <div class="loginmodalbox modal fade" id="ritekhelamodalsearch" tabindex="-1">
